@@ -1,41 +1,39 @@
 
+const { string } = require("joi");
 const mongoose = require("mongoose");
 // import autoIncrement from "mongoose-auto-increment"
 
-const CompanyDataSchema = new mongoose.Schema({
+const GetSponsorSchema = new mongoose.Schema({
 
-    CompanyName: {
+    EventStartDate: {
         type: String,
         required: true
     },
-    Password: {
+    EventEndDate: {
         type: String,
         required: true
     },
-    Email: {
+    EventTitle: {
         type: String,
         required: true
     },
-    MobileNo: {
+    EventDesc: {
+        type: String,
+        required: true
+    },
+    Deliverables: {
+        type: String,
+    },
+    ExpectedAmount: {
         type: Number,
-        required: true
-    },
-    Founded: {
-        type: Number,
-        required: true
-    },
-    Industry: {
-        type: String,
-        required: true
     }
-
 });
 
 // autoIncrement.initialize(mongoose.connection);
 // userData.plugin(autoIncrement.plugin,"")
 
-const companyData = mongoose.model("companyData", CompanyDataSchema)
+const GetSponsor = mongoose.model("GetSponsor", GetSponsorSchema)
 
-module.exports = companyData;
+module.exports = GetSponsor;
 
 
