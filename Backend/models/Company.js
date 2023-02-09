@@ -1,6 +1,4 @@
-
 const mongoose = require("mongoose");
-// import autoIncrement from "mongoose-auto-increment"
 
 const CompanyDataSchema = new mongoose.Schema({
 
