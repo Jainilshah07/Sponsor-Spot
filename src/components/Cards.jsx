@@ -1,6 +1,6 @@
 import React from 'react'
-import needsponsor from "../need a sponsor.jpg";
-import becomesponsor from "../become a sponsor.jpg";
+import becomesponsor from "../assets/needsponsor.jpg";
+import wantsponsor from "../assets/wantsponsor.jpg";
 
 const Cards = () => {
     return (
@@ -11,7 +11,7 @@ const Cards = () => {
                     </div>
                     <div className="col-sm-6 col-lg-4 d-flex justify-content-center mt-5 ">
                         <div className="card" style={{ width: "20rem" }}>
-                            <img className="card-img-top" src={needsponsor} alt="Card image cap" />
+                            <img className="card-img-top" src={wantsponsor} alt="Card image cap" />
                             <div className="card-body">
                                 <h5 className="card-title">Heading 1</h5>
                                 <p className="card-text">some text</p>
