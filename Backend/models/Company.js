@@ -31,11 +31,11 @@ const mongoose = require("mongoose");
 
 const CompanyDataSchema = new mongoose.Schema({
 
-    FirstName: {
+    CompanyName: {
         type: String,
         required: true
     },
-    LastName: {
+    Password: {
         type: String,
         required: true
     },
@@ -47,9 +47,15 @@ const CompanyDataSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
-    Dates: {
+    Founded: {
+        type: Number,
+        required: true
+    },
+    Industry: {
         type: String,
+        required: true
     }
+
 });
 
 // autoIncrement.initialize(mongoose.connection);

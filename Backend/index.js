@@ -18,6 +18,8 @@ app.use(express.json());
 
 app.use("/api/CreateCompany", require("./routes/Company"))
 
+app.use("/api/GetCompany", require("./routes/Company"))
+
 // app.use("/api/TotalBooking", require("./Routes/TotalBooking"))
 
 // app.use("/api/TotalPayment", require("./Routes/TotalPayment"))
