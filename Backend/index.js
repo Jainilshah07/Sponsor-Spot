@@ -22,6 +22,10 @@ app.use("/api/GetCompany", require("./routes/Company"))
 
 app.use("/api/GetSponsor", require("./routes/GetSponsor"))
 
+app.use("/api/BeSponsor", require("./routes/BeSponsor"))
+
+app.use("/api/GetAvailableSponsorships", require("./routes/BeSponsor"))
+
 // app.use("/api/TotalBooking", require("./Routes/TotalBooking"))
 
 // app.use("/api/TotalPayment", require("./Routes/TotalPayment"))

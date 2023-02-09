@@ -31,8 +31,6 @@ const CompanyDataSchema = new mongoose.Schema({
 
 });
 
-// autoIncrement.initialize(mongoose.connection);
-// userData.plugin(autoIncrement.plugin,"")
 
 const companyData = mongoose.model("companyData", CompanyDataSchema)
 
