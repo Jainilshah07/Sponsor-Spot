@@ -1,16 +1,19 @@
-const mongoose = require('mongoose')
+const mongoose = require("mongoose");
 
+const URI = "mongodb://localhost:27017/SS";
 
+const connectToMongo = () => {
+    // Connecting to the database
+    mongoose
+        .connect(URI)
+        .then(() => {
+            console.log("Successfully connected to database");
+        })
+        .catch((error) => {
+            console.log("database connection failed. exiting now...");
+            console.error(error);
+            process.exit(1);
+        });
+};
 
-module.exports.dbConnection = async (MONGO_URI) => {
-    try {
-        await mongoose.connect(MONGO_URI)
-        //mongoose.set('strictQuery', false);
-        console.log("Connected to mongodb");
-
-    } catch (ex) {
-        console.log(ex);
-    }
-}
-
-    //mongodb://localhost:27017/SponserSpot
+module.exports = connectToMongo;

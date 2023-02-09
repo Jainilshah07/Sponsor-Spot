@@ -1,22 +1,37 @@
-require('dotenv/config')
-require('express-async-errors')
-const express = require('express')
+const express = require("express");
+const connectToMongo = require("./services/Database");
+const cors = require("cors");
+const bodyParser = require("body-parser")
+port = 8000
 
-const { dbConnection } = require('./services/Database')
+const app = express();
 
-const PORT = process.env.PORT || 8000
-const MONGO_URI = process.env.MONGO_URI
+connectToMongo();
 
-const StartServer = async () => {
+app.use(bodyParser.json({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors());
 
-    const app = express()
+app.use(express.json());
 
-    await dbConnection(MONGO_URI)
+// app.use(require("./Routes/Payment"))
+
+app.use("/api/CreateCompany", require("./routes/Company"))
+
+// app.use("/api/TotalBooking", require("./Routes/TotalBooking"))
+
+// app.use("/api/TotalPayment", require("./Routes/TotalPayment"))
+
+// app.use("/api/TotalSite", require("./Routes/TotalSite"))
+
+// app.use("/api/TotalSiteUpdated", require("./Routes/TotalSiteUpdated"))
 
 
-    app.listen(PORT, () => {
-        console.log(`Listening at port ${PORT}`)
-    })
-}
+// app.post("/UserProfile", (req, res) => {
+//     console.log(req.body);
+// })
 
-StartServer()
+
+app.listen(8000, () => {
+    console.log("Listening on port 8000");
+})
