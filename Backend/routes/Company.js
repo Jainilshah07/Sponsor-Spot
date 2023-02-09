@@ -24,6 +24,21 @@ router.post("/CreateCompany", async (req, res) => {
     }
 });
 
+router.post("/login", async (req, res) => {
+    try {
+        const company = await Company.findOne({ Email: req.body.Email });
+        if (!company) return res.status(401).send({ error: 'Invalid email or password' });
+    
+        // const isPasswordMatch = await bcrypt.compare(req.body.password, company.password);
+        // if (!isPasswordMatch) return res.status(401).send({ error: 'Invalid email or password' });
+    
+        // const token = jwt.sign({ id: company._id }, process.env.JWT_SECRET, { expiresIn: '1d' });
+        res.status(200).send("Login Successfull");
+      } catch (error) {
+        res.status(500).send({ error: 'Error logging in' });
+      }    
+});
+
 router.get("/GetCompany", async (req, res) => {
     try {
         const ans = await Company.find();
