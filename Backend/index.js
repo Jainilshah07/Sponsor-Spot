@@ -22,6 +22,8 @@ app.use("/api/login", require("./routes/Company"))
 
 app.use("/api/GetCompany", require("./routes/Company"))
 
+app.use("/api/GetSponsor", require("./routes/GetSponsor"))
+
 app.use("/api/BeSponsor", require("./routes/BeSponsor"))
 
 app.use("/api/GetAvailableSponsorships", require("./routes/BeSponsor"))
