@@ -1,12 +1,38 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Image from "../asset/sponsorImg.svg";
-import { useNavigate } from 'react-router-dom';
-const Sponsor=()=> 
-{
+import { Link, useNavigate } from 'react-router-dom';
+import axios from '../axios'
+const Sponsor=()=> {
     const navigate = useNavigate();
-    const handleSubmit = () => {
-        navigate("/Sponsorlist");
-    }
+    const [input, setInput] = useState({
+        amount:"", SponserType:"", SponserCategory:"", PastCount:"", Deliverables:"" 
+      });
+    
+      const InputHandler = (e) => {
+        const name = e.target.name;
+        const value = e.target.value;
+    
+        setInput({
+          ...input,
+          [name]: value,
+        });
+      };
+
+    const SubmitHandler = async (e) => {
+        e.preventDefault();
+        const BeSponsor = { amount : input.amount ,SponserType:input.SponserType, SponserCategory:input.SponserCategory, Deliverables:input.Deliverables, PastCount: input.PastCount }
+        console.log(BeSponsor);
+        try{
+            const res = await axios.post("/BeSponsor/BeSponsor", BeSponsor);
+            console.log(res.data);
+            navigate("/ur-sponsor-list");
+        }catch (error){
+            console.log("error form content", error)
+        }
+        setInput({
+            amount:"", SponserCategory:"", SponserType:"", Deliverables:"", PastCount:""
+        });
+      };
    return(
     <>
     <div className='container d-flex min-vw-100 min-vh-100 overflow-hidden' style={{backgroundColor:"#8cb1c2"}}>
@@ -22,20 +48,20 @@ const Sponsor=()=>
             <label for="inputPassword6" className="col-form-label fw-bold">Amount</label>
         </div>
         <div className="col-auto">
-            <input type="number" id="inputPassword6" className="form-control" aria-describedby="passwordHelpInline"/>
+            <input type="number" name="amount" value={input.amount} onChange={InputHandler} className="form-control" aria-describedby="passwordHelpInline"/>
         </div>
         <div className="col-auto">
         </div>
         </div>
 
-     <select className="form-select form-select-sm mt-1" aria-label=".form-select-sm example">
+     <select name="SponserCategory" value={input.SponserCategory} onChange={InputHandler} className="form-select form-select-sm mt-1" aria-label=".form-select-sm example">
             <option selected className="fw-bold">Category</option>
             <option value="1">Title Sponsor</option>
             <option value="2">Associate Sponsor</option>
             <option value="3">Partners</option>
     </select>
 
-    <select className="form-select form-select-sm mt-4" aria-label=".form-select-sm example">
+    <select name="SponserType" value={input.SponserCategory} onChange={InputHandler} className="form-select form-select-sm mt-4" aria-label=".form-select-sm example">
             <option selected className='fw-bold'>Types of Sponsors</option>
             <option value="1">Food</option>
             <option value="2">Energy drinks</option>
@@ -48,28 +74,27 @@ const Sponsor=()=>
             <label for="inputPassword6" className="col-form-label fw-bold">Past Count of sponsors</label>
         </div>
         <div className="col-auto">
-            <input type="number" id="inputPassword6" className="form-control" aria-describedby="passwordHelpInline"/>
+            <input type="number" name="SponserType" value={input.SponserCategory} onChange={InputHandler} className="form-control" aria-describedby="passwordHelpInline"/>
         </div>
         <div className="col-auto">
         </div>
         </div>
 
         <div className="mb-3">
-        {/* <label for="exampleFormControlTextarea1" className="form-label text-left">Deliverables</label> */}
         <div className='mr-auto ml-0 mb-3 fw-bold'>Deliverables</div>
-        <textarea className="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        <textarea className="form-control" name="Deliverables" value={input.Deliverables} onChange={InputHandler} rows="3"></textarea>
         </div>
         
         <div classNameName="col-auto">
-        {/* <button type="button" class="btn btn-danger p-2 border border-secondary">Submit</button> */}
-        <button className='border border-secondary p-2 bg-success fw-bold' onClick={handleSubmit}>Submit</button>
+        <button className='border border-secondary p-2 bg-success fw-bold' onClick={SubmitHandler}>Submit</button>
         </div>
         
     </form>
     </div>
     <div className='col-lg-7'>
-    <div className='m-5'>
+    <div className='m-3'>
         <div className='ms-5'>
+            <Link to="/ur-sponsor-list"><button className='btn btn-primary my-4'>Your Given Sponsorships</button></Link>
         <img src={Image} className="w-80+- h-100 ms-5 " alt=""/>
         </div>
         </div>

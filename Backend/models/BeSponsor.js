@@ -4,7 +4,7 @@ const BeSponsorSchema = new mongoose.Schema({
 
     CompanyName:{
         type: String,
-        required: true
+        // required: true
     },
 
     amount: {
@@ -16,15 +16,15 @@ const BeSponsorSchema = new mongoose.Schema({
     },
     SponserCategory: {
         type: String, //title,assosciate
-        required: true
+        // required: true
     },
     PastCount: {
         type: Number, //history - 2 
-        required: true
+        // required: true
     },
     Deliverables: {
         type: String,
-        required: true
+        // required: true
     }
 
 });

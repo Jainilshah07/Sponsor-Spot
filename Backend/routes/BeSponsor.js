@@ -10,8 +10,6 @@ const companyData = require("../models/Company");
 router.post("/BeSponsor", async (req, res) => {
     try {
         const {CompanyName, amount, SponserType, SponserCategory, PastCount, Deliverables } = req.body;
-        // const company = await companyData.findById(CompanyId);
-        // if (!company) return res.status(400).send({ error: 'Invalid company ID' });
     
         const sponsorship = await BeSponsor.create({
           CompanyName,
