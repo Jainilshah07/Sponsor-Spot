@@ -1,11 +1,12 @@
-import React from 'react'
+import React from 'react';
+import Homebody from '../../components/Homebody';
 
 const Home = () => {
   return (
-    <div>
-      Home here!!
-    </div>
-  )
+    <>
+      <Homebody/>
+    </>
+  );
 }
 
 export default Home

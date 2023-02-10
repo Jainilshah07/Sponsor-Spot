@@ -4,21 +4,36 @@ import Login from './pages/Login/Login';
 import Home from './pages/Home/Home';
 import Profile from './components/Profile';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import Cards from './components/Cards';
+import Header from './components/Header';
+import Card from './pages/Card';
+import Wsponsorlist from './components/Wsponsorlist';
+import Sponsorlist from './components/Sponsorlist';
+import Sponsor from './pages/Sponsor';
+import Wantsponsor from './pages/Wantsponsor';
+import Footer from './components/Footer';
+import Signup from './pages/Login/Signup';
+import Complain from './components/Complain';
 
 function App() {
   return (
     <div className="App">
 
       <BrowserRouter>
-        <Navbar />
+        <Header />
         <Routes>
           <Route exact path="/" element={<Home />} />
-          <Route exact path="/Cards" element={<Cards />} />
           <Route exact path="/login" element={<Login />}></Route>
           <Route exact path="/profile" element={<Profile />}> </Route>
+          <Route exact path="/card" element={<Card />}> </Route>
+          <Route exact path="/wantsponsor" element={<Wantsponsor />}> </Route>
+          <Route exact path="/wsponserlist" element={<Wsponsorlist />}> </Route>
+          <Route exact path="/sponsor" element={<Sponsor />}> </Route>
+          <Route exact path="/sponsorlist" element={<Sponsorlist />}> </Route>
+          <Route exact path="/signup" element={<Signup />}> </Route>
+          <Route exact path="/complain" element={<Complain />}> </Route>
+
         </Routes>
+        <Footer />
       </BrowserRouter>
     </div>
   );
