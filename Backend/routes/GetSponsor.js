@@ -21,6 +21,19 @@ router.post("/GetSponsor", async (req, res) => {
     }
 });
 
+router.get("/GetSponserDetails", async (req, res) => {
+    try {
+        const { EventStartDate, EventEndDate, EventTitle, EventDesc, Deliverables, ExpectedAmount } = req.body;
+        const ans = await GetSponer.find();
+        res.status(200).json(ans)
+
+    } catch (e) {
+        console.error(e.message);
+        res.status(404).json({ message: e.message });
+    }
+})
+
+
 
 
 module.exports = router;
